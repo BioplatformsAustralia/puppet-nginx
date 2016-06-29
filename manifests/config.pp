@@ -241,15 +241,17 @@ class nginx::config(
     ensure => directory,
   }
 
-  file {$client_body_temp_path:
-    ensure => directory,
-    owner  => $daemon_user,
-  }
-
-  file {$proxy_temp_path:
-    ensure => directory,
-    owner  => $daemon_user,
-  }
+# CCG: not needed when running in docker container
+#
+#  file {$client_body_temp_path:
+#    ensure => directory,
+#    owner  => $daemon_user,
+#  }
+#
+#  file {$proxy_temp_path:
+#    ensure => directory,
+#    owner  => $daemon_user,
+#  }
 
   file { "${conf_dir}/sites-available":
     ensure => directory,
