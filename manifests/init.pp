@@ -92,6 +92,7 @@ class nginx (
   $super_user                     = undef,
   $temp_dir                       = undef,
   $vhost_purge                    = undef,
+  $nginx_cfg_prepend              = undef,
 
   # Primary Templates
   $conf_template                  = undef,
@@ -157,6 +158,7 @@ class nginx (
         $fastcgi_cache_use_stale or
         $gzip or
         $http_access_log or
+        $nginx_cfg_prepend or
         $http_cfg_append or
         $http_tcp_nodelay or
         $http_tcp_nopush or
@@ -248,6 +250,7 @@ class nginx (
       multi_accept                   => $multi_accept,
       names_hash_bucket_size         => $names_hash_bucket_size,
       names_hash_max_size            => $names_hash_max_size,
+      nginx_cfg_prepend              => $nginx_cfg_prepend,
       nginx_error_log                => $nginx_error_log,
       pid                            => $pid,
       proxy_buffers                  => $proxy_buffers,
